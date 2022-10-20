@@ -1,0 +1,419 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap");
+/* ✔Custom Properties */
+/* Typography */
+/* Variable for transforming .share__social-media  box
+  without repeating all transform value */
+/* Optional */
+/* ✔ Configuring the animations, in case the user has disabled the animations. */
+@media (prefers-reduced-motion: reduce) {
+  /* I advise to put the specific tag, because it affects the performance with "*" */
+  * {
+    animation: none;
+    transition: none;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box; /* To avoid problems in box model */
+  vertical-align: baseline; /* To align text & images */
+}
+
+img,
+picture,
+video,
+iframe,
+figure {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  /* opcional */
+  object-fit: cover;
+  /* opcional */
+  object-position: center center;
+}
+
+a {
+  display: block;
+}
+
+p a {
+  display: inline;
+}
+
+li {
+  list-style-type: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+strong,
+blockquote,
+i,
+b,
+u,
+em {
+  font-size: 1em;
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ✔ Avoiding problems with quotes pseudo elements. */
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: "";
+  content: none;
+}
+
+/* ✔ Leveling problems of fonts and placement of forms. */
+form,
+input,
+textarea,
+select,
+button,
+label {
+  font-family: inherit;
+  font-size: inherit;
+  hyphens: auto; /** Si el texto no cabe en el contenedor/linea, coloca un "-" en el corte de la palabra */
+  background-color: transparent;
+  display: block;
+  color: inherit;
+  appearance: none; /* opcional */
+}
+
+/* ✔ Resetting tablels */
+table,
+tr,
+td {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ✔ Avoid problems with SVG */
+svg {
+  width: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+/* ✔ Configuring the typography of the entire web */
+body {
+  max-width: 100%;
+  min-height: 100vh;
+  font-size: 100%;
+  font-family: "Manrope", sans-serif;
+  color: hsl(217deg, 19%, 35%);
+  background-color: hsl(213deg, 44%, 95%);
+  line-height: 1.4em; /* This is optional but, line spacing recommendation: between 1.4em and 1.6em */
+  /* optional */ /*hyphens: auto;*/
+  /* optional */
+  font-smooth: always; /* To better define the letter */
+  /* optional */
+  --webkit-font-smoothing: antialiased;
+  /* optional */
+  --moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  display: grid;
+  place-content: center;
+}
+
+/********* 1440px ***********/
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 18rem minmax(18.75rem, 30rem);
+  gap: 0;
+  margin: 0 2rem;
+  box-shadow: 0px 25px 15px -10px rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
+}
+.card__img {
+  overflow: hidden;
+}
+.card__img--banner {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left;
+  transition: 0.5s ease;
+  border-radius: 10px 0 0 10px;
+}
+.card__img:hover .card__img--banner {
+  transform: scale(1.1);
+}
+
+.content {
+  transition: 0.5s ease;
+  background: hsl(0deg, 0%, 100%);
+  padding: 2rem 2.5rem;
+  border-radius: 0 10px 10px 0;
+}
+.content__title {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  font-weight: 700;
+  transition: 0.5s ease;
+}
+.content__text {
+  font-size: 0.9rem;
+  color: hsl(214deg, 17%, 51%);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+.content__footer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+  position: relative;
+}
+.content__footer--author {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: start;
+  align-items: center;
+  gap: 0;
+}
+.author__avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+.author__info--name {
+  font-weight: 600;
+  font-size: 1rem;
+  transition: 0.5s ease;
+}
+.author__info--publish-date {
+  font-size: 1rem;
+  color: hsl(214deg, 17%, 51%);
+}
+
+.share {
+  position: relative;
+}
+.share__button {
+  width: 2.2rem;
+  height: 2.2rem;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background: hsl(213deg, 44%, 95%);
+  font-size: 1rem;
+  color: hsl(217deg, 19%, 35%);
+  padding: 0.3rem;
+  transition: 0.5s ease;
+}
+.share__button:hover, .share__button.active {
+  background: hsl(217deg, 19%, 35%);
+  color: hsl(0deg, 0%, 100%);
+}
+.share__social-media {
+  position: absolute;
+  background: hsl(217deg, 19%, 35%);
+  bottom: calc(100% + 1.5rem);
+  left: 50%;
+  transform: translate(-50%, 0) scale(0);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2.5rem;
+  border-radius: 0.8rem;
+  box-shadow: 8px 8px 15px -5px rgba(0, 0, 0, 0.4);
+  color: hsl(0deg, 0%, 100%);
+  transform-origin: bottom;
+  visibility: hidden;
+  transition: 0.5s ease;
+}
+.share__social-media.active {
+  transform: translate(-50%, 0) scale(1);
+  visibility: visible;
+}
+.share__social-media::after {
+  content: "";
+  position: absolute;
+  background: hsl(217deg, 19%, 35%);
+  width: 1.3rem;
+  height: 1.3rem;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -65%) rotate(45deg);
+}
+
+.sm__text {
+  font-size: 0.8rem;
+  line-height: 0.8rem;
+  letter-spacing: 0.2rem;
+  color: hsl(213deg, 44%, 95%);
+}
+.sm__icon {
+  display: block;
+  font-size: 1.3rem;
+  transition: 0.5s ease;
+}
+
+.sm__icon:hover,
+.content__title:hover,
+.author__info--name:hover {
+  color: #6ec0b0;
+}
+
+/* Section atribution*/
+.attribution {
+  position: fixed;
+  padding: 0 0 0 1.5rem;
+  background: #d9d9d9;
+  border-radius: 50px;
+  bottom: 10px;
+  right: 10px;
+  width: 4rem;
+  height: 4rem;
+  overflow: hidden;
+  transition: 0.4s;
+  text-align: left;
+  line-height: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+.attribution__text {
+  transition: opacity 0.3s 0.3s;
+  opacity: 0;
+  min-width: 19rem;
+  margin: 0.2rem 0 0;
+  color: #3e8577;
+  font-weight: 600;
+}
+.attribution__text--a {
+  color: #bf712c;
+}
+.attribution__img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  max-width: 4rem;
+  border: 4px solid #d9d9d9;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.attribution:hover {
+  width: 19.5rem;
+  border-radius: 50px;
+}
+.attribution:hover .attribution__text {
+  opacity: 1;
+}
+
+@media screen and (max-width: 925px) {
+  .card {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0;
+    max-width: 25rem;
+    overflow: hidden;
+    border-radius: 0.7rem;
+  }
+  .card__img {
+    height: 16rem;
+  }
+  .card__img--banner {
+    border-radius: 0;
+    object-position: center 30%;
+  }
+  .content {
+    border-radius: 0;
+    padding: 2.5rem 2rem 1rem;
+  }
+  .content__title {
+    font-size: 1.2rem;
+  }
+  .content__text {
+    font-size: 1rem;
+  }
+  .share {
+    position: static;
+    z-index: 1;
+  }
+  .share__button {
+    z-index: 1;
+  }
+  .share__button:hover {
+    background: hsl(217deg, 19%, 35%);
+    color: hsl(0deg, 0%, 100%);
+  }
+  .share__button.active {
+    background: hsl(214deg, 17%, 51%);
+  }
+  .share__social-media {
+    border-radius: 0;
+    width: calc(100% + 5rem);
+    height: 5rem;
+    z-index: -1;
+    bottom: -1rem;
+    left: 50%;
+    transform: translate(-50%, 6rem);
+  }
+  .share__social-media.active {
+    transform: translate(-50%, 0);
+  }
+  .share__social-media::after {
+    display: none;
+  }
+  .sm {
+    justify-content: flex-start;
+  }
+  .sm__text {
+    line-height: 1.5;
+    font-size: 1.1rem;
+  }
+  .sm__icon {
+    font-size: 1.8rem;
+  }
+}
+@media screen and (max-width: 420px) {
+  .content__title {
+    font-size: 0.95rem;
+  }
+  .content__text {
+    font-size: 0.85rem;
+  }
+  .author__avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+  .author__info--name {
+    font-size: 0.9rem;
+  }
+  .author__info--publish-date {
+    font-size: 0.8rem;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
